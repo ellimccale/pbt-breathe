@@ -1,0 +1,34 @@
+{foreach $[thread]}
+	<tr id="$[thread.content_id]" class="$[thread.content_class]">
+		<td class="icon">$[thread.icon]</td>
+		<td class="checkbox clickable">$[thread.checkbox]</td>
+		<td class="main clickable" title="$[thread.short_content]">
+			<table>
+                <tr>
+                    <td>$[thread.labels]</td>
+                </tr>
+				<tr>
+					<td class="title">
+                        $[thread.icons]
+						<span class="link target">$[thread]</span>
+					</td>
+				</tr>
+                <tr>
+                    <td class="created-by">
+                        Created by $[thread.created_by]
+                    </td>
+                </tr>
+			</table>
+		</td>
+        <td class="pages">{if $[thread.pagination]}<div class="ui-micro-pagination">$[thread.pagination]</div>{/if}</td>
+		<td class="replies clickable">$[thread.replies]<br>repl{if $[thread.num_posts] != 2}ies{else}y{/if}</td>
+		<td class="views">$[thread.views]<br>view{if $[thread.views] != 1}s{/if}</td>
+		<td class="latest last">$[thread.last_post.created_on]<br>by $[thread.last_post.created_by]</td>
+	</tr>
+	<tr class="spacer"><td colspan="7"></td></tr>
+{/foreach}
+{if !$[thread]}
+	<tr class="last">
+		<td class="last center" colspan="7">No threads were found.</td>
+	</tr>
+{/if}
