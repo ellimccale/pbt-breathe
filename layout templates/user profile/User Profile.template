@@ -1,0 +1,40 @@
+<div class="container show-user">
+	<div class="title-bar">
+		<h1>View Profile - $[user.name] ($[user.username])</h1>
+	</div>
+	<div class="content cap-bottom">
+        <div class="profile-cover-image" {foreach $[user.custom_field]}{if $[user.custom_field.name] == "Profile Cover Image"}style="background-image:url('$[user.custom_field.value]');"{/if}{/foreach}>
+            <div class="ui-tabMenu">
+                <ul class="ui-helper-clearfix">
+                    {foreach $[menu]}<li{if $[menu.active]} class="ui-active"{/if}><a href="$[menu.href]">$[menu.text]</a></li>{/foreach}
+                </ul>
+            </div>
+        </div>
+        <div class="profile-user">
+            <div class="profile-user-avatar">$[user.avatar_medium]</div>
+            <div class="profile-user-fields">
+                <span class="username" style="color:$[user.color];">
+                    $[user.name]
+                    <span class="offline {if $[user.is_online]}online{/if}" title="User is {if $[user.is_online]}online{else}offline{/if}">&bull;</span>
+                </span>
+                {if $[user.group]}
+                	<span class="user-group">$[user.group.name]</span>
+                	<span class="user-stars">$[user.group.stars]</span>
+                {else}
+                	<span class="user-group">$[user.rank.name]</span>
+                	<span class="user-stars">$[user.rank.stars]</span>
+                {/if}
+            </div>
+            <div class="profile-user-options controls">
+                $[options]
+				$[send_message_button]
+				$[edit_profile_button]
+				$[follow_button]
+				$[invite_button]
+            </div>
+        </div>
+        <div class="profile-content">
+            $[content]
+        </div>
+	</div>
+</div>
