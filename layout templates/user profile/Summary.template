@@ -1,0 +1,173 @@
+$[form.header]
+	<table>
+        <tbody>
+            <tr>
+                <td class="summary-left-col">
+                    <div class="summary-status">
+                        <div class="personal-text">
+                            {if $[user.personal_text.message]}
+                            	$[user.personal_text.message]
+                            {else}
+                                I have nothing to say...
+                            {/if}
+                        </div>
+                        {if $[can.update_status]}
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td class="status-input">$[form.update.input]</td>
+                                        <td class="status-submit">$[form.submit.button]</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        {/if}
+                    </div>
+                    {if $[user.warning.bar]}
+                        <div class="summary-content-box">
+							<table>
+                                <tbody>
+                                    <tr>
+                                        <td class="field">Warning Level:</td>
+                                        <td class="value">$[user.warning.bar]</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    {/if}
+                    <div class="summary-content-box">
+                        <table>
+							<tbody>
+                                {if $[user.custom_title]}
+                                    <tr>
+                                        <td class="field">Custom Title:</td>
+                                        <td class="value">$[user.custom_title]</td>
+                                    </tr>
+                                {/if}
+                                {if $[user.email]}
+                                    <tr>
+                                        <td class="field">Email:</td>
+                                        <td class="value">$[user.email]</td>
+                                    </tr>
+                                {/if}
+                                {if $[user.website]}
+                                    <tr>
+                                        <td class="field">Website:</td>
+                                        <td class="value">$[user.website]</td>
+                                    </tr>
+                                {/if}
+                                {if $[user.birthday]}
+                                    <tr>
+                                        <td class="field">Birthday:</td>
+                                        <td class="value">$[user.birthday]</td>
+                                    </tr>
+                                {/if}
+                                {if $[user.age]}
+                                    <tr>
+                                        <td class="field">Age:</td>
+                                        <td class="value">$[user.age]</td>
+                                    </tr>
+                                {/if}
+                                {if $[user.gender]}
+                                    <tr>
+                                        <td class="field">Gender:</td>
+                                        <td class="value">$[user.gender.text]</td>
+                                    </tr>
+                                {/if}
+                                {if $[user.location]}
+                                    <tr>
+                                        <td class="field">Location:</td>
+                                        <td class="value">$[user.location]</td>
+                                    </tr>
+                                {/if}
+                                <!-- BEGIN MONETARY SYSTEM FIELDS
+								     UNCOMMENT TO USE
+                                <tr>
+									<td class="field money_text"></td>
+                                    <td class="value money_amount"><span class="money_symbol"></span></td>
+                                </tr>
+                                <tr>
+									<td class="field bank_text"></td>
+                                    <td class="value bank_amount"><span class="bank_symbol"></span></td>
+                                </tr>
+								END MONETARY SYSTEM FIELDS --->
+                                <tr>
+                                    <td class="field">Posts:</td>
+                                    <td class="value">$[user.posts]</td>
+                                </tr>
+                                <tr>
+                                    <td class="field">Date Registered:</td>
+                                    <td class="value">$[user.registered_on]</td>
+                                </tr>
+                                {foreach $[user.custom_field]}
+                                	{if $[user.custom_field.name] != "Profile Cover Image"}
+                                        <tr class="$[user.custom_field.content_class]">
+                                            <td class="field">$[user.custom_field.name]:</td>
+                                            <td class="value">$[user.custom_field.value]</td>
+                                        </tr>
+                                    {/if}
+                                {/foreach}
+                            </tbody>
+                        </table>
+                    </div>
+                    {if $[user.social_exists]}
+                        {if $[user.social_network]}
+                            <div class="summary-content-box">
+								<table>
+                                    <tbody>
+                                        {foreach $[user.social_network]}
+                                            <tr>
+                                                <td class="field">$[user.social_network]:</td>
+                                                <td class="value"><a href="$[user.social_network.href]" rel="$[user.social_network.rel]" target="$[user.social_network.target]">$[user.social_network.href]</a></td>
+                                            </tr>
+                                        {/foreach}
+                                    </tbody>
+                                </table>
+                            </div>
+                        {/if}
+                        {if $[user.instant_messenger]}
+                            <div class="summary-content-box">
+								<table>
+                                    <tbody>
+                                        {foreach $[user.instant_messenger]}
+                                        	<tr>
+                                                <td class="field">$[user.instant_messenger.name]:</td>
+                                                <td class="value">$[user.instant_messenger.value]</td>
+                                            </tr>
+                                        {/foreach}
+                                    </tbody>
+                                </table>
+                            </div>
+                        {/if}
+                    {/if}
+                    <div class="summary-content-box">
+                        $[recent_posts_link]<br>
+                        $[recent_threads_created_link]
+                    </div>
+                    {if $[user.signature]}
+                        <div class="summary-content-box">
+                            $[user.signature]
+                        </div>
+                    {/if}
+                </td>
+                <td class="summary-right-col">
+                    {if $[following]}
+                    	<div class="follow summary-content-box">
+                            <h4>$[view_following_link]</h4>
+                            {foreach $[following]}
+                            	$[following.microprofile]
+                            {/foreach}
+                    	</div>
+                    {/if}
+                    {if $[follower]}
+                    	<div class="follow summary-content-box">
+                            <h4>$[view_followers_link]</h4>
+                            {foreach $[follower]}
+                            	$[follower.microprofile]
+                            {/foreach}
+                    	</div>
+                    {/if}
+                </td>
+            </tr>
+        </tbody>
+	</table>
+$[form.footer]
