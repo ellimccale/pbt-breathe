@@ -1,0 +1,413 @@
+<!DOCTYPE HTML>
+$[tag.html.open]
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <title>$[title] | $[forum.name]</title>
+    $[head]
+    <!-- Custom fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700' rel='stylesheet' type='text/css'>
+    <link href='//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css' rel='stylesheet' type='text/css'>
+
+    <script>
+    $(document).ready(function(){
+        // Sticky-kit v1.1.2 | WTFPL | Leaf Corcoran 2015 | http://leafo.net
+        (function(){var t,i;t=this.jQuery||window.jQuery,i=t(window),t.fn.stick_in_parent=function(o){var s,e,n,r,c,l,a,p,u,d,f;for(null==o&&(o={}),f=o.sticky_class,c=o.inner_scrolling,d=o.recalc_every,u=o.parent,p=o.offset_top,a=o.spacer,e=o.bottoming,null==p&&(p=0),null==u&&(u=void 0),null==c&&(c=!0),null==f&&(f="is_stuck"),s=t(document),null==e&&(e=!0),n=function(o,n,r,l,h,g,k,m){var v,y,_,b,w,x,C,I,z,A,j,M;if(!o.data("sticky_kit")){if(o.data("sticky_kit",!0),w=s.height(),C=o.parent(),null!=u&&(C=C.closest(u)),!C.length)throw"failed to find stick parent";if(v=_=!1,(j=null!=a?a&&o.closest(a):t("<div />"))&&j.css("position",o.css("position")),I=function(){var t,i,e;return!m&&(w=s.height(),t=parseInt(C.css("border-top-width"),10),i=parseInt(C.css("padding-top"),10),n=parseInt(C.css("padding-bottom"),10),r=C.offset().top+t+i,l=C.height(),_&&(v=_=!1,null==a&&(o.insertAfter(j),j.detach()),o.css({position:"",top:"",width:"",bottom:""}).removeClass(f),e=!0),h=o.offset().top-(parseInt(o.css("margin-top"),10)||0)-p,g=o.outerHeight(!0),k=o.css("float"),j&&j.css({width:o.outerWidth(!0),height:g,display:o.css("display"),"vertical-align":o.css("vertical-align"),"float":k}),e)?M():void 0},I(),g!==l)return b=void 0,x=p,A=d,M=function(){var t,u,y,z;return!m&&(y=!1,null!=A&&(--A,0>=A&&(A=d,I(),y=!0)),y||s.height()===w||I(),y=i.scrollTop(),null!=b&&(u=y-b),b=y,_?(e&&(z=y+g+x>l+r,v&&!z&&(v=!1,o.css({position:"fixed",bottom:"",top:x}).trigger("sticky_kit:unbottom"))),h>y&&(_=!1,x=p,null==a&&("left"!==k&&"right"!==k||o.insertAfter(j),j.detach()),t={position:"",width:"",top:""},o.css(t).removeClass(f).trigger("sticky_kit:unstick")),c&&(t=i.height(),g+p>t&&!v&&(x-=u,x=Math.max(t-g,x),x=Math.min(p,x),_&&o.css({top:x+"px"})))):y>h&&(_=!0,t={position:"fixed",top:x},t.width="border-box"===o.css("box-sizing")?o.outerWidth()+"px":o.width()+"px",o.css(t).addClass(f),null==a&&(o.after(j),"left"!==k&&"right"!==k||j.append(o)),o.trigger("sticky_kit:stick")),_&&e&&(null==z&&(z=y+g+x>l+r),!v&&z))?(v=!0,"static"===C.css("position")&&C.css({position:"relative"}),o.css({position:"absolute",bottom:n,top:"auto"}).trigger("sticky_kit:bottom")):void 0},z=function(){return I(),M()},y=function(){return m=!0,i.off("touchmove",M),i.off("scroll",M),i.off("resize",z),t(document.body).off("sticky_kit:recalc",z),o.off("sticky_kit:detach",y),o.removeData("sticky_kit"),o.css({position:"",bottom:"",top:"",width:""}),C.position("position",""),_?(null==a&&("left"!==k&&"right"!==k||o.insertAfter(j),j.remove()),o.removeClass(f)):void 0},i.on("touchmove",M),i.on("scroll",M),i.on("resize",z),t(document.body).on("sticky_kit:recalc",z),o.on("sticky_kit:detach",y),setTimeout(M,0)}},r=0,l=this.length;l>r;r++)o=this[r],n(t(o));return this}}).call(this);
+        
+        // Sticky mini profile using Sticky-kit
+        $('.mini-profile').stick_in_parent({
+        	offset_top: 142
+        });
+        
+        // Delayed sticky navigation menu
+        var $nav = $('#navigation-container');
+        var pos = $nav.position();
+        $(window).scroll(function() {
+            var windowpos = $(window).scrollTop();
+            if (windowpos >= pos.top + 1) {
+                $nav.addClass('sticky');
+            } else {
+                $nav.removeClass('sticky');
+            }
+        });
+        
+        // Navigation menu dropdowns
+        var dropdownSibling = $('#navigation-menu > ul li > a');
+        var dropdown = $('.dropdown');
+        
+        dropdown.hide().removeClass('fallback');
+        dropdownSibling.click(function() {
+            $(this).find('i.fa-caret-down').toggleClass('fa-caret-up');
+            $(this).next(dropdown).slideToggle('fast');
+        });
+
+        $(document).click(function(e) {
+            // Collapse dropdown if anywhere else on the document is clicked
+            // Also change caret icon direction
+            var target = e.target;
+            if (!$(target).is(dropdownSibling) && !$(target).parents().is(dropdownSibling)) {
+                dropdownSibling.find('i.fa-caret-down').removeClass('fa-caret-up');
+                dropdown.slideUp('fast');
+            }
+        });
+        
+        dropdown.click(function(e) {
+            // Stop dropdown from collapsing when clicked on itself
+            e.stopPropagation();
+        });
+        
+        // Create darkened overlay behind recent threads modal
+        if($('#recent-threads, #guests-online').length){
+            $('#recent-threads, #guests-online').dialog('option', 'modal', true);
+        } else {
+            $(document).on('dialogcreate', function(event){
+                if(event.target.id == 'recent-threads' || 'guests-online'){
+                    $(event.target).dialog('option', 'modal', true);
+                }
+            });
+        }
+
+        // Fix the navigation tree
+        $('#nav-tree .menu_arrow').remove();
+        $('#nav-tree, .nav-tree-branch').removeClass('ui-helper-clearfix');
+
+        // Remove double angle quotes from pagination
+        var $paginationNext = $('.ui-pagination-next > a');
+        var $paginationPrev = $('.ui-pagination-prev > a');
+
+        $paginationNext.text($paginationNext.text().replace('»', ''));
+        $paginationPrev.text($paginationPrev.text().replace('«', ''));
+        
+        // Replace icons with Font Awesome glyphs
+        $('a.likes-button > img').replaceWith('<i class="fa fa-heart"></i>');
+        $('.button .status > img').replaceWith('<i class="fa fa-cog"></i>');
+        $('.ui-search .search-filters-button .icon > img').replaceWith('<i class="fa fa-search"></i>');
+        
+        // Replace thread/conversations icons with Font Awesome glyphs        
+        $('.thread > .icon > img').replaceWith('<i class="fa fa-comment-o"></i>');
+        $('.thread.sticky > .icon > i').replaceWith('<i class="fa fa-sticky-note-o"></i>');
+        $('.thread.announcement > .icon > i').replaceWith('<i class="fa fa-bullhorn"></i>');
+        $('.conversations .item > .icon > img').replaceWith('<i class="fa fa-envelope-o"></i>');
+        $('.conversations .item.new > .icon > i').replaceWith('<i class="fa fa-envelope"></i>');
+
+        // Append Font Awesome glyphs to tricky icons
+        $('.lock_icon').append('<i class="fa fa-lock"></i>');
+        $('.bookmark_icon').append('<i class="fa fa-bookmark"></i>');
+        $('.poll_icon').append('<i class="fa fa-bar-chart"></i>');
+
+        // Create an array for tricky icons
+        var $icons = ['.lock_icon','.bookmark_icon','.poll_icon'];
+
+        // Loop through each item of the array
+        $.each($icons, function(index, value){
+            // Loop through each item of the array on the page
+            $(value).each(function(){
+                // Check if child images are set to display: none
+                if($(this).children('img').css('display') == 'none'){
+                    // Hide the parent if so
+                    // This works better than hiding the icon
+                    // It hides the padding as well
+                    $(this).css('display','none');
+                };
+                // Finally, remove child image from the DOM
+                $(this).find('img').remove();
+            });
+        });
+        
+        // Create variable for the checkmark container
+        var $checkContainer = $('.ui-poll .results tr td .select-box');
+
+        // Loop through each .select-box
+        $checkContainer.each(function(){
+            // Append the Font Awesome checkmark to .select-box
+            $(this).append($('<i class="fa fa-check"></i>'));
+
+            // Then remove the image from the DOM
+            $(this).children('img').remove();
+        });
+    });
+    </script>
+
+    <script>
+    // Remove default inline styles from thread descriptions plugin
+    // Has to be on window.load
+    $(window).load(function(){
+        $('.thread_description_page').removeAttr('style');
+    });
+    </script>
+</head>
+<body>
+    {if $[maintenance_mode]}
+        <div class="maintenance-header">
+            {if $[can.disable_maintenance]}<p>Finished with maintenance? $[disable_maintenance_link].</p>{/if}
+        </div>
+    {/if}
+    
+    <header role="banner">
+        <div id="banner-container">
+            <div id="banner">
+                <h1 class="forum-name">
+                    <svg>
+                        <text x="50%" y="50%" dy="0.43em">
+                            $[forum.name]
+                        </text>
+                    </svg>
+                </h1>
+                <h2 class="sub-head">
+                    A ProBoards v5 Theme
+                </h2>
+            </div>
+        </div>
+
+        <a id="navigation-skip" href="#content" accesskey="s" class="aria-hidden" title="Skip Navigation">Skip Navigation</a>
+        <a href="#" accesskey="d" title="Open Menu" onclick="proboards.hotkeys.activate(Keys.d); return false;"></a>
+        <div id="navigation-container">
+            <div id="navigation-menu" class="ui-helper-clearfix">
+                <div class="navigation-left">
+                    $[navigation.tree]
+                </div>
+                <ul class="navigation-right" role="navigation">
+                    <li class="static">
+                        <a href="javascript:void(0);">
+                            Site Info
+                            <i class="fa fa-caret-down dropdown-arrow"></i>
+                        </a>
+                        <div class="dropdown info-dropdown fallback">
+                            <div class="grid-row">
+                                <div class="grid-col-4">
+                                    <div class="grid-content has-children">
+                                        <div class="grid-row top">
+                                            <div class="grid-col-12">
+                                                <div class="grid-content">
+                                                    <h3>Welcome to Breathe</h3>
+                                                    <hr>
+                                                    <div class="scroll-content welcome">
+                                                        <p>Shabby chic pug cred, crucifix hella VHS bitters. Quinoa pabst keffiyeh church-key synth. Bitters green juice bespoke, 90's pabst knausgaard man braid shoreditch bicycle rights fap keytar celiac. Four dollar toast narwhal 90's, slow-carb
+                                                            tacos etsy crucifix stumptown iPhone bushwick scenester beard. Pickled chia normcore cronut, vinyl occupy salvia art party austin craft beer twee.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="grid-row bottom">
+                                            <div class="grid-col-12">
+                                                <div class="grid-content">
+                                                    <!-- COPYRIGHT | DO NOT MODIFY OR REMOVE -->
+                                                    <p class="copyright">Theme by <a href="http://ellimccale.com" target="_blank">elli mccale</a><br>
+                                                        <a rel="license" href="http://creativecommons.org/licenses/by-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nd/4.0/80x15.png" /></a>
+                                                    </p>
+                                                    <!-- END COPYRIGHT -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="grid-col-4">
+                                    <div class="grid-content">
+                                        <ul class="link-list">
+                                            <li><a href="#" target="_parent">Link 1 &rsaquo;</a></li>
+                                            <li><a href="#" target="_parent">Link 2 &rsaquo;</a></li>
+                                            <li><a href="#" target="_parent">Link 3 &rsaquo;</a></li>
+                                            <li><a href="#" target="_parent">Link 4 &rsaquo;</a></li>
+                                            <li><a href="#" target="_parent">Link 5 &rsaquo;</a></li>
+                                            <li><a href="#" target="_parent">Link 6 &rsaquo;</a></li>
+                                            <li><a href="#" target="_parent">Link 7 &rsaquo;</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="grid-col-4">
+                                    <div class="grid-content">
+                                        <h3>Updates</h3>
+                                        <hr>
+                                        <div class="scroll-content updates">
+                                            <p><strong>03.02.16</strong>&nbsp;&nbsp;Helvetica gluten-free readymade scenester occupy kogi. Pickled venmo asymmetrical you probably haven't heard of them.</p>
+                                            <p><strong>02.25.16</strong>&nbsp;&nbsp;Sartorial keffiyeh brooklyn, yr letterpress austin tousled DIY thundercats chillwave squid. Narwhal offal mumblecore pickled poutine quinoa.</p>
+                                            <p><strong>01.02.16</strong>&nbsp;&nbsp;Umami celiac franzen, scenester wolf flexitarian semiotics squid chicharrones authentic pabst synth gentrify.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="grid-col-4 grid-col-4-images">
+                                    <div class="grid-content has-children">
+                                        <div class="grid-row top">
+                                            <div class="grid-col-12">
+                                                <div class="grid-content images">
+                                                    <img src="http://placehold.it/300x140/b5bac0/e2e6eb" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="grid-row bottom">
+                                            <div class="grid-col-12">
+                                                <div class="grid-content images">
+                                                    <img src="http://placehold.it/300x140/b5bac0/e2e6eb" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    {if !$[current_user.is_member]}
+                    	<li>Welcome, Guest</li>
+                    	<li>{if $[login_link]}$[login_link]{/if}</li>
+                    	<li>{if $[register_link]}$[register_link]{/if}</li>
+                    	{foreach $[navigation.menu]}
+                    		{if $[navigation.menu.name] == "Search"}
+                    			<li>
+                                    <a href="$[navigation.menu.href]"{if $[navigation.menu.accesskey]} accesskey="$[navigation.menu.accesskey]"{/if}>
+                                        <i class="fa fa-search"></i>
+                                        <span>Search</span>
+                                    </a>
+                   				</li>
+                    		{/if}
+                    		{if $[navigation.menu.name] == "Calendar"}
+                    			<li>
+                                    <a href="$[navigation.menu.href]"{if $[navigation.menu.accesskey]} accesskey="$[navigation.menu.accesskey]"{/if}>
+                                        <i class="fa fa-calendar"></i>
+                                        <span>Calendar</span>
+                                    </a>
+                   				</li>
+                    		{/if}
+                    	{/foreach}
+                    {else}
+                    <li>
+                        <a href="javascript:void(0);">
+                            <span>User Options | </span>
+                            Hello, $[current_user.name]
+                            <i class="fa fa-caret-down dropdown-arrow"></i>
+                        </a>
+                        <ul class="dropdown profile-dropdown fallback">
+                            <li><a href="$[current_user.href]"><i class="fa fa-user"></i> Profile</a></li>
+                            <li><a href="$[current_user.href]/personal"><i class="fa fa-cogs"></i> Edit Settings</a></li>
+                            {if $[current_user.can_admin]}
+                            	<li><a href="/admin"><i class="fa fa-wrench"></i> Admin</a></li>
+                            {/if}
+                            <li class="separator"></li>
+                            <li><a href="$[logout_link.href]"><i class="fa fa-sign-out"></i> Logout</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);">
+                            <i class="fa fa-bell"></i>
+                            <span>Notifications</span>
+                            {if $[current_user.new_notifications]}
+                                <div class="tip-holder" onclick="window.location='$[current_user.href]/notifications'; return false;">
+                                    <div class="tip-number">$[current_user.new_notifications]</div>
+                                </div>
+                            {/if}
+                        </a>
+                    </li>
+                    {foreach $[navigation.menu]}
+                    		{if $[navigation.menu.name] == "Messages"}
+                    			<li>
+                                	<a href="$[navigation.menu.href]"{if $[navigation.menu.accesskey]} accesskey="$[navigation.menu.accesskey]"{/if}>
+                                        <i class="fa fa-envelope"></i>
+                                        <span>Messages</span>
+                                        {if $[navigation.menu.notification.total]}
+                                        	<div class="tip-holder" onclick="window.location='$[navigation.menu.notification.href]'; return false;">
+                                                <div class="tip-number">$[navigation.menu.notification.total]</div>
+                                            </div>
+                                        {/if}
+                                    </a>
+                    			</li>
+                    		{/if}
+                    		{if $[navigation.menu.name] == "Search"}
+                    			<li>
+                                    <a href="$[navigation.menu.href]"{if $[navigation.menu.accesskey]} accesskey="$[navigation.menu.accesskey]"{/if}>
+                                        <i class="fa fa-search"></i>
+                                        <span>Search</span>
+                                    </a>
+                   				</li>
+                    		{/if}
+                    		{if $[navigation.menu.name] == "Calendar"}
+                    			<li>
+                                    <a href="$[navigation.menu.href]"{if $[navigation.menu.accesskey]} accesskey="$[navigation.menu.accesskey]"{/if}>
+                                        <i class="fa fa-calendar"></i>
+                                        <span>Calendar</span>
+                                    </a>
+                   				</li>
+                    		{/if}
+                    	{/foreach}
+                    {/if}
+                    <li>
+                        <a href="javascript:void(0);">
+                            <span>Topics</span>
+                            <i class="fa fa-bars"></i>
+                        </a>
+                        <ul class="dropdown topics-dropdown fallback">
+                            <li><a href="/threads/recent"><i class="fa fa-comment"></i> Recent Threads</a></li>
+                            <li><a href="/posts/recent"><i class="fa fa-commenting"></i> Recent Posts</a></li>
+                            {foreach $[navigation.menu]}
+                            	{if $[navigation.menu.name] == "Bookmarks"}
+                            		<li>
+                                        <a href="$[navigation.menu.href]"{if $[navigation.menu.accesskey]} accesskey="$[navigation.menu.accesskey]"{/if}>
+                                            <i class="fa fa-bookmark"></i>
+                                            Bookmarks
+                                        </a>
+                            		</li>
+                            	{/if}
+                            {/foreach}
+                            {if $[participated_threads_link]}
+                                <li class="separator"></li>
+                                <li>$[participated_threads_link]</li>
+                            {/if}
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    $[header]
+    
+    <div id="wrapper">
+        <div id="content" role="main">
+            {if $[notice]}
+                <div class="container">
+                    <div class="title-bar"><h2>$[notice.title]</h2></div>
+                    <div class="content pad-all cap-bottom">
+                        $[notice.message]
+                    </div>
+                </div>
+            {/if}
+            
+            $[content]
+            
+            $[shoutbox]
+            
+            <!-- BEGIN AFFILIATE TABLE -->
+            <div class="container affiliates">
+                <div class="content">
+                    
+                    <!-- SCROLLING AFFILIATES -->
+                    <div class="marquee-container">
+                        <span>
+                            <a href="#" target="_blank"><img src="http://placehold.it/88x31/b5bac0/e2e6eb" width="88" height="31" border="0" alt="Affiliate Name"></a>
+                            <a href="#" target="_blank"><img src="http://placehold.it/88x31/b5bac0/e2e6eb" width="88" height="31" border="0" alt="Affiliate Name"></a>
+                            <a href="#" target="_blank"><img src="http://placehold.it/88x31/b5bac0/e2e6eb" width="88" height="31" border="0" alt="Affiliate Name"></a>
+                            <a href="#" target="_blank"><img src="http://placehold.it/88x31/b5bac0/e2e6eb" width="88" height="31" border="0" alt="Affiliate Name"></a>
+                            <a href="#" target="_blank"><img src="http://placehold.it/88x31/b5bac0/e2e6eb" width="88" height="31" border="0" alt="Affiliate Name"></a>
+                            <a href="#" target="_blank"><img src="http://placehold.it/88x31/b5bac0/e2e6eb" width="88" height="31" border="0" alt="Affiliate Name"></a>
+                            <a href="#" target="_blank"><img src="http://placehold.it/88x31/b5bac0/e2e6eb" width="88" height="31" border="0" alt="Affiliate Name"></a>
+                            <a href="#" target="_blank"><img src="http://placehold.it/88x31/b5bac0/e2e6eb" width="88" height="31" border="0" alt="Affiliate Name"></a>
+                            <a href="#" target="_blank"><img src="http://placehold.it/88x31/b5bac0/e2e6eb" width="88" height="31" border="0" alt="Affiliate Name"></a>
+                            <a href="#" target="_blank"><img src="http://placehold.it/88x31/b5bac0/e2e6eb" width="88" height="31" border="0" alt="Affiliate Name"></a>
+                        </span>
+                    </div>
+                    
+                    <!-- STATIC AFFILIATES
+                    <a href="#" target="_blank"><img src="http://placehold.it/88x31/b5bac0/e2e6eb" width="88" height="31" border="0" alt="Affiliate Name"></a>
+					-->
+                </div>
+            </div>
+            <!-- END AFFILIATE TABLE -->
+        </div>
+    </div>
+    
+    <div id="footer">        
+        $[footer]
+    </div>
+    
+    {if $[is_mobile_browser]}
+    	<br /><p class="center">Switch to the $[mobile_switch_link].</p>
+    {/if}
+</body>
+</html>
