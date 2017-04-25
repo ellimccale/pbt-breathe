@@ -1,0 +1,43 @@
+{foreach $[message]}
+	<tr id="$[message.content_id]" class="$[message.content_class]{if $[message.even]} even{/if}">
+		<td>
+			<table>
+				<tr>
+					<td class="left-panel" rowspan="2">
+						$[message.created_by.miniprofile]
+					</td>
+					<td class="content">
+						<div class="message">$[message.body]</div>
+					</td>
+				</tr>
+                <tr>
+                    <td class="sub-foot">                      
+						{if $[message.created_by.signature]}
+							<div class="signature">$[message.created_by.signature]</div>
+						{/if}
+                    </td>
+                </tr>
+				<tr>
+					<td class="foot" colspan="2">
+						<div class="info">
+							<span class="posted-on">
+								Message sent $[message.created_on]
+								{if $[message.how_posted]}
+									<span class="post-method">via $[message.how_posted]</span>
+								{/if}
+							</span>
+						</div>
+						<div class="controls">
+							$[message.quote_button]
+							$[message.select_options]
+						</div>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+	<tr class="spacer"><td></td></tr>
+{/foreach}
+{if !$[message]}
+	<tr class="last"><td class="last center" colspan="1">No messages were found.</td></tr>
+{/if}
