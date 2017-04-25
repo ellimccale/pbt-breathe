@@ -1,0 +1,55 @@
+<div class="$[miniprofile_class]">
+    {if $[user.is_member]}
+        {if $[user.avatar]}
+            <div class="avatar">$[user.avatar]</div>
+        {/if}
+    	{if $[user.warning.bar]}
+    		<div class="warning-bar-container">$[user.warning.bar]</div>
+    	{/if}
+        <span class="username">
+            $[user]
+            <span class="offline {if $[user.is_online]}online{/if}" title="User is {if $[user.is_online]}online{else}offline{/if}">&bull;</span>
+        </span>
+    	{if $[user.custom_title]}
+        	<span class="custom-title">$[user.custom_title]</span>
+        {/if}
+    	{if $[user.group]}
+    		<span class="group">$[user.group.name]</span>
+    		{if $[user.group.stars]}
+    			<span class="stars">$[user.group.stars]</span>
+    		{/if}
+    	{elseif $[user.rank]}
+    		<span class="rank">$[user.rank.name]</span>
+    		{if $[user.rank.stars]}
+    			<span class="stars">$[user.rank.stars]</span>
+    		{/if}
+    	{/if}
+    	<div class="info"><span class="field">Posts:</span> <span class="value">$[user.posts]</span></div>
+    	<div class="info"><span class="field">Likes:</span> <span class="value">$[user.likes]</span></div>
+        {if $[user.gender]}
+    		<div class="info"><span class="field">Gender:</span> <span class="value">$[user.gender.text]</span></div>
+        {/if}
+    	<!-- MONETARY SYSTEM FIELD
+             UNCOMMENT TO USE
+			<div class="info"><span class="money_text field"></span> <span class="value money_amount"><span class="money_symbol"></span></span></div>
+		END MONETARY SYSTEM FIELD -->
+        {foreach $[user.mini_custom_field]}
+        	<div class="info $[user.mini_custom_field.content_class]"><span class="field">$[user.mini_custom_field.name]:</span> <span class="value">$[user.mini_custom_field.value]</span></div>
+        {/foreach}
+        {if $[user.badges_miniprofile]}
+            <div class="$[user.badges_miniprofile_container_class]">
+                {foreach $[user.badges_miniprofile]}
+                	$[user.badges_miniprofile.icon]
+                {/foreach}
+            </div>
+        {/if}
+    {else}
+    	<span class="username">$[user]</span>
+    	{if $[user.is_guest]}
+        	<span class="group">Guest</span>
+        {/if}
+    	{if $[user.is_deleted]}
+        	<span class="group">Deleted</span>
+        {/if}
+    {/if}
+</div>
