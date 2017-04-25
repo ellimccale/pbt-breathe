@@ -1,0 +1,59 @@
+{foreach $[post]}
+	<tr id="$[post.content_id]" class="$[post.content_class]{if $[post.even]} even{/if}{if $[viewing_recent_posts]} recent{/if}">
+		<td class="$[post.unblocked_class]">
+			<table role="grid">
+				<tr>
+                    <td class="left-panel" rowspan="2">
+						$[post.created_by.miniprofile]
+					</td>
+                    <td class="content">
+                        <article>
+                            <h3 class="title aria-hidden">Post by $[post.created_by.name] on $[post.created_on]</h3>
+                            <div class="message">$[post.message]</div>
+                        </article>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="sub-foot">
+                        $[post.likes]                        
+						{if $[post.created_by.signature]}
+							<div class="signature">$[post.created_by.signature]</div>
+						{/if}
+                    </td>
+                </tr>
+                <tr>
+                    <td class="foot" colspan="2">
+                        <div class="info">
+                            $[post.thread]
+                            <span class="posted-on">
+                                Posted $[post.created_on]
+                                {if $[post.how_posted]}
+                                    <span class="post-method">via $[post.how_posted]</span>
+                                {/if}
+                            </span>
+                            {if $[post.edited]}
+                                <span class="edited_by">Edited by $[post.edited.by_user] $[post.edited.date] {if $[post.edited.reason]}: $[post.edited.reason]{/if}</span>
+                            {/if}
+                        </div>
+                        <div class="controls">
+                            $[post.quote_button]
+                            $[post.edit_button]
+                            $[post.likes.button]
+                            $[post.select_options]
+                        </div>
+                    </td>
+                </tr>
+			</table>
+		</td>
+		{if $[post.is_blocked]}
+			<td class="$[post.blocked_class] content center">
+				<div class="message note pad-bottom">This post is hidden</div>
+				$[post.display_blocked_post_button]
+			</td>
+		{/if}
+	</tr>
+	<tr class="spacer"><td></td></tr>
+{/foreach}
+{if !$[post]}
+	<tr class="last"><td class="last center" colspan="1">No posts were found.</td></tr>
+{/if}
