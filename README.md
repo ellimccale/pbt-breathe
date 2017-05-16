@@ -22,7 +22,7 @@ On CSS and HTML:
 1. You are **welcome** and **encouraged** to edit any part of this theme. However, you **may not** use it as a base for your own premade.
 2. You **are not allowed** to remove any of my comments.
 3. **Absolutely do not** claim *Breathe* as your own. Copyrights must remain in tact.
-4. **Absolutely** do not repost this theme without my permission. Please notify me if you see it posted outside of *Adoxography*, *ProBoards Support*, or GitHub.
+4. **Absolutely do not** repost this theme without my permission. Please notify me if you see it posted outside of *Adoxography*, *ProBoards Support*, or GitHub.
 5. You **are not allowed** to pick and choose parts from *Breathe*. If you would like an individual remodel, please request it.
 6. **Do not use the headline font, Steelfish Regular, outside of this theme.** It's hosted on my server, I can track references to it. I will find you.
 
