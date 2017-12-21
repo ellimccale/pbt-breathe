@@ -1,3 +1,6 @@
+### v1.0.5
+- Corrected issue from base theme where clicking pagination links causes the Font Awesome glyphs to disappear
+
 ### v1.0.4
 - Added max-height: 170px to .scroll-content (info dropdown)
 - Added comments around copyright to remind users not to remove it
