@@ -10,120 +10,136 @@ $[tag.html.open]
 
     <script>
     $(document).ready(function(){
-        // Sticky-kit v1.1.2 | WTFPL | Leaf Corcoran 2015 | http://leafo.net
-        (function(){var t,i;t=this.jQuery||window.jQuery,i=t(window),t.fn.stick_in_parent=function(o){var s,e,n,r,c,l,a,p,u,d,f;for(null==o&&(o={}),f=o.sticky_class,c=o.inner_scrolling,d=o.recalc_every,u=o.parent,p=o.offset_top,a=o.spacer,e=o.bottoming,null==p&&(p=0),null==u&&(u=void 0),null==c&&(c=!0),null==f&&(f="is_stuck"),s=t(document),null==e&&(e=!0),n=function(o,n,r,l,h,g,k,m){var v,y,_,b,w,x,C,I,z,A,j,M;if(!o.data("sticky_kit")){if(o.data("sticky_kit",!0),w=s.height(),C=o.parent(),null!=u&&(C=C.closest(u)),!C.length)throw"failed to find stick parent";if(v=_=!1,(j=null!=a?a&&o.closest(a):t("<div />"))&&j.css("position",o.css("position")),I=function(){var t,i,e;return!m&&(w=s.height(),t=parseInt(C.css("border-top-width"),10),i=parseInt(C.css("padding-top"),10),n=parseInt(C.css("padding-bottom"),10),r=C.offset().top+t+i,l=C.height(),_&&(v=_=!1,null==a&&(o.insertAfter(j),j.detach()),o.css({position:"",top:"",width:"",bottom:""}).removeClass(f),e=!0),h=o.offset().top-(parseInt(o.css("margin-top"),10)||0)-p,g=o.outerHeight(!0),k=o.css("float"),j&&j.css({width:o.outerWidth(!0),height:g,display:o.css("display"),"vertical-align":o.css("vertical-align"),"float":k}),e)?M():void 0},I(),g!==l)return b=void 0,x=p,A=d,M=function(){var t,u,y,z;return!m&&(y=!1,null!=A&&(--A,0>=A&&(A=d,I(),y=!0)),y||s.height()===w||I(),y=i.scrollTop(),null!=b&&(u=y-b),b=y,_?(e&&(z=y+g+x>l+r,v&&!z&&(v=!1,o.css({position:"fixed",bottom:"",top:x}).trigger("sticky_kit:unbottom"))),h>y&&(_=!1,x=p,null==a&&("left"!==k&&"right"!==k||o.insertAfter(j),j.detach()),t={position:"",width:"",top:""},o.css(t).removeClass(f).trigger("sticky_kit:unstick")),c&&(t=i.height(),g+p>t&&!v&&(x-=u,x=Math.max(t-g,x),x=Math.min(p,x),_&&o.css({top:x+"px"})))):y>h&&(_=!0,t={position:"fixed",top:x},t.width="border-box"===o.css("box-sizing")?o.outerWidth()+"px":o.width()+"px",o.css(t).addClass(f),null==a&&(o.after(j),"left"!==k&&"right"!==k||j.append(o)),o.trigger("sticky_kit:stick")),_&&e&&(null==z&&(z=y+g+x>l+r),!v&&z))?(v=!0,"static"===C.css("position")&&C.css({position:"relative"}),o.css({position:"absolute",bottom:n,top:"auto"}).trigger("sticky_kit:bottom")):void 0},z=function(){return I(),M()},y=function(){return m=!0,i.off("touchmove",M),i.off("scroll",M),i.off("resize",z),t(document.body).off("sticky_kit:recalc",z),o.off("sticky_kit:detach",y),o.removeData("sticky_kit"),o.css({position:"",bottom:"",top:"",width:""}),C.position("position",""),_?(null==a&&("left"!==k&&"right"!==k||o.insertAfter(j),j.remove()),o.removeClass(f)):void 0},i.on("touchmove",M),i.on("scroll",M),i.on("resize",z),t(document.body).on("sticky_kit:recalc",z),o.on("sticky_kit:detach",y),setTimeout(M,0)}},r=0,l=this.length;l>r;r++)o=this[r],n(t(o));return this}}).call(this);
-        
         // Sticky mini profile using Sticky-kit
-        $('.mini-profile').stick_in_parent({
-        	offset_top: 142
-        });
+        (function() {
+            // Sticky-kit v1.1.2 | WTFPL | Leaf Corcoran 2015 | http://leafo.net
+	        (function(){var t,i;t=this.jQuery||window.jQuery,i=t(window),t.fn.stick_in_parent=function(o){var s,e,n,r,c,l,a,p,u,d,f;for(null==o&&(o={}),f=o.sticky_class,c=o.inner_scrolling,d=o.recalc_every,u=o.parent,p=o.offset_top,a=o.spacer,e=o.bottoming,null==p&&(p=0),null==u&&(u=void 0),null==c&&(c=!0),null==f&&(f="is_stuck"),s=t(document),null==e&&(e=!0),n=function(o,n,r,l,h,g,k,m){var v,y,_,b,w,x,C,I,z,A,j,M;if(!o.data("sticky_kit")){if(o.data("sticky_kit",!0),w=s.height(),C=o.parent(),null!=u&&(C=C.closest(u)),!C.length)throw"failed to find stick parent";if(v=_=!1,(j=null!=a?a&&o.closest(a):t("<div />"))&&j.css("position",o.css("position")),I=function(){var t,i,e;return!m&&(w=s.height(),t=parseInt(C.css("border-top-width"),10),i=parseInt(C.css("padding-top"),10),n=parseInt(C.css("padding-bottom"),10),r=C.offset().top+t+i,l=C.height(),_&&(v=_=!1,null==a&&(o.insertAfter(j),j.detach()),o.css({position:"",top:"",width:"",bottom:""}).removeClass(f),e=!0),h=o.offset().top-(parseInt(o.css("margin-top"),10)||0)-p,g=o.outerHeight(!0),k=o.css("float"),j&&j.css({width:o.outerWidth(!0),height:g,display:o.css("display"),"vertical-align":o.css("vertical-align"),"float":k}),e)?M():void 0},I(),g!==l)return b=void 0,x=p,A=d,M=function(){var t,u,y,z;return!m&&(y=!1,null!=A&&(--A,0>=A&&(A=d,I(),y=!0)),y||s.height()===w||I(),y=i.scrollTop(),null!=b&&(u=y-b),b=y,_?(e&&(z=y+g+x>l+r,v&&!z&&(v=!1,o.css({position:"fixed",bottom:"",top:x}).trigger("sticky_kit:unbottom"))),h>y&&(_=!1,x=p,null==a&&("left"!==k&&"right"!==k||o.insertAfter(j),j.detach()),t={position:"",width:"",top:""},o.css(t).removeClass(f).trigger("sticky_kit:unstick")),c&&(t=i.height(),g+p>t&&!v&&(x-=u,x=Math.max(t-g,x),x=Math.min(p,x),_&&o.css({top:x+"px"})))):y>h&&(_=!0,t={position:"fixed",top:x},t.width="border-box"===o.css("box-sizing")?o.outerWidth()+"px":o.width()+"px",o.css(t).addClass(f),null==a&&(o.after(j),"left"!==k&&"right"!==k||j.append(o)),o.trigger("sticky_kit:stick")),_&&e&&(null==z&&(z=y+g+x>l+r),!v&&z))?(v=!0,"static"===C.css("position")&&C.css({position:"relative"}),o.css({position:"absolute",bottom:n,top:"auto"}).trigger("sticky_kit:bottom")):void 0},z=function(){return I(),M()},y=function(){return m=!0,i.off("touchmove",M),i.off("scroll",M),i.off("resize",z),t(document.body).off("sticky_kit:recalc",z),o.off("sticky_kit:detach",y),o.removeData("sticky_kit"),o.css({position:"",bottom:"",top:"",width:""}),C.position("position",""),_?(null==a&&("left"!==k&&"right"!==k||o.insertAfter(j),j.remove()),o.removeClass(f)):void 0},i.on("touchmove",M),i.on("scroll",M),i.on("resize",z),t(document.body).on("sticky_kit:recalc",z),o.on("sticky_kit:detach",y),setTimeout(M,0)}},r=0,l=this.length;l>r;r++)o=this[r],n(t(o));return this}}).call(this);
+            
+            $('.mini-profile').stick_in_parent({
+                offset_top: 142
+            });
+        })();
         
         // Delayed sticky navigation menu
-        var $nav = $('#navigation-container');
-        var pos = $nav.position();
-        $(window).scroll(function() {
-            var windowpos = $(window).scrollTop();
-            if (windowpos >= pos.top + 1) {
-                $nav.addClass('sticky');
-            } else {
-                $nav.removeClass('sticky');
-            }
-        });
-        
-        // Navigation menu dropdowns
-        var dropdownSibling = $('#navigation-menu > ul li > a');
-        var dropdown = $('.dropdown');
-        
-        dropdown.hide().removeClass('fallback');
-        dropdownSibling.click(function() {
-            $(this).find('i.fa-caret-down').toggleClass('fa-caret-up');
-            $(this).next(dropdown).slideToggle('fast');
-        });
-
-        $(document).click(function(e) {
-            // Collapse dropdown if anywhere else on the document is clicked
-            // Also change caret icon direction
-            var target = e.target;
-            if (!$(target).is(dropdownSibling) && !$(target).parents().is(dropdownSibling)) {
-                dropdownSibling.find('i.fa-caret-down').removeClass('fa-caret-up');
-                dropdown.slideUp('fast');
-            }
-        });
-        
-        dropdown.click(function(e) {
-            // Stop dropdown from collapsing when clicked on itself
-            e.stopPropagation();
-        });
-        
-        // Create darkened overlay behind recent threads modal
-        if($('#recent-threads, #guests-online').length){
-            $('#recent-threads, #guests-online').dialog('option', 'modal', true);
-        } else {
-            $(document).on('dialogcreate', function(event){
-                if(event.target.id == 'recent-threads' || 'guests-online'){
-                    $(event.target).dialog('option', 'modal', true);
+        (function() {
+            var $nav = $('#navigation-container');
+            var pos = $nav.position();
+            $(window).scroll(function() {
+                var windowpos = $(window).scrollTop();
+                if (windowpos >= pos.top + 1) {
+                    $nav.addClass('sticky');
+                } else {
+                    $nav.removeClass('sticky');
                 }
             });
-        }
+        })();
+        
+        // Navigation menu dropdowns
+        (function() {
+            var dropdownSibling = $('#navigation-menu > ul li > a');
+            var dropdown = $('.dropdown');
+
+            dropdown.hide().removeClass('fallback');
+            dropdownSibling.click(function() {
+                $(this).find('i.fa-caret-down').toggleClass('fa-caret-up');
+                $(this).next(dropdown).slideToggle('fast');
+            });
+
+            $(document).click(function(e) {
+                // Collapse dropdown if anywhere else on the document is clicked
+                // Also change caret icon direction
+                var target = e.target;
+                if (!$(target).is(dropdownSibling) && !$(target).parents().is(dropdownSibling)) {
+                    dropdownSibling.find('i.fa-caret-down').removeClass('fa-caret-up');
+                    dropdown.slideUp('fast');
+                }
+            });
+
+            dropdown.click(function(e) {
+                // Stop dropdown from collapsing when clicked on itself
+                e.stopPropagation();
+            });
+        })();
+        
+        // Create darkened overlay behind recent threads modal
+        (function() {
+            if($('#recent-threads, #guests-online').length){
+                $('#recent-threads, #guests-online').dialog('option', 'modal', true);
+            } else {
+                $(document).on('dialogcreate', function(event){
+                    if(event.target.id == 'recent-threads' || 'guests-online'){
+                        $(event.target).dialog('option', 'modal', true);
+                    }
+                });
+            }
+        })();
 
         // Fix the navigation tree
-        $('#nav-tree .menu_arrow').remove();
-        $('#nav-tree, .nav-tree-branch').removeClass('ui-helper-clearfix');
+        (function() {
+            $('#nav-tree .menu_arrow').remove();
+            $('#nav-tree, .nav-tree-branch').removeClass('ui-helper-clearfix');
 
-        // Remove double angle quotes from pagination
-        var $paginationNext = $('.ui-pagination-next > a');
-        var $paginationPrev = $('.ui-pagination-prev > a');
+            // Remove double angle quotes from pagination
+            var $paginationNext = $('.ui-pagination-next > a');
+            var $paginationPrev = $('.ui-pagination-prev > a');
 
-        $paginationNext.text($paginationNext.text().replace('»', ''));
-        $paginationPrev.text($paginationPrev.text().replace('«', ''));
+            $paginationNext.text($paginationNext.text().replace('»', ''));
+            $paginationPrev.text($paginationPrev.text().replace('«', ''));
+        })();
         
-        // Replace icons with Font Awesome glyphs
-        $('a.likes-button > img').replaceWith('<i class="fa fa-heart"></i>');
-        $('.button .status > img').replaceWith('<i class="fa fa-cog"></i>');
-        $('.ui-search .search-filters-button .icon > img').replaceWith('<i class="fa fa-search"></i>');
-        
-        // Replace thread/conversations icons with Font Awesome glyphs        
-        $('.thread > .icon > img').replaceWith('<i class="fa fa-comment-o"></i>');
-        $('.thread.sticky > .icon > i').replaceWith('<i class="fa fa-sticky-note-o"></i>');
-        $('.thread.announcement > .icon > i').replaceWith('<i class="fa fa-bullhorn"></i>');
-        $('.conversations .item > .icon > img').replaceWith('<i class="fa fa-envelope-o"></i>');
-        $('.conversations .item.new > .icon > i').replaceWith('<i class="fa fa-envelope"></i>');
+        // Replace default icons with Font Awesome glyphs
+        function replaceDefaultIcons() {
+        	// Replace interaction icons with Font Awesome glyphs
+            $('a.likes-button > img').replaceWith('<i class="fa fa-heart"></i>');
+            $('.button .status > img').replaceWith('<i class="fa fa-cog"></i>');
+            $('.ui-search .search-filters-button .icon > img').replaceWith('<i class="fa fa-search"></i>');
 
-        // Append Font Awesome glyphs to tricky icons
-        $('.lock_icon').append('<i class="fa fa-lock"></i>');
-        $('.bookmark_icon').append('<i class="fa fa-bookmark"></i>');
-        $('.poll_icon').append('<i class="fa fa-bar-chart"></i>');
+            // Replace thread/conversations icons with Font Awesome glyphs        
+            $('.thread > .icon > img').replaceWith('<i class="fa fa-comment-o"></i>');
+            $('.thread.sticky > .icon > i').replaceWith('<i class="fa fa-sticky-note-o"></i>');
+            $('.thread.announcement > .icon > i').replaceWith('<i class="fa fa-bullhorn"></i>');
+            $('.conversations .item > .icon > img').replaceWith('<i class="fa fa-envelope-o"></i>');
+            $('.conversations .item.new > .icon > i').replaceWith('<i class="fa fa-envelope"></i>');
 
-        // Create an array for tricky icons
-        var $icons = ['.lock_icon','.bookmark_icon','.poll_icon'];
+            // Append Font Awesome glyphs to tricky icons
+            $('.lock_icon').append('<i class="fa fa-lock"></i>');
+            $('.bookmark_icon').append('<i class="fa fa-bookmark"></i>');
+            $('.poll_icon').append('<i class="fa fa-bar-chart"></i>');
 
-        // Loop through each item of the array
-        $.each($icons, function(index, value){
-            // Loop through each item of the array on the page
-            $(value).each(function(){
-                // Check if child images are set to display: none
-                if($(this).children('img').css('display') == 'none'){
-                    // Hide the parent if so
-                    // This works better than hiding the icon
-                    // It hides the padding as well
-                    $(this).css('display','none');
-                };
-                // Finally, remove child image from the DOM
-                $(this).find('img').remove();
+            // Create an array for tricky icons
+            var $trickyIcons = ['.lock_icon','.bookmark_icon','.poll_icon'];
+
+            // Loop through each item of the tricky icons array
+            $.each($trickyIcons, function(index, value){
+                // Loop through each item of the array on the page
+                $(value).each(function(){
+                    // Check if child images are set to display: none
+                    if($(this).children('img').css('display') == 'none'){
+                        // Hide the parent if so
+                        // This works better than hiding the icon
+                        // It hides the padding as well
+                        $(this).css('display','none');
+                    };
+                    // Finally, remove child image from the DOM
+                    $(this).find('img').remove();
+                });
             });
-        });
+
+            // Create variable for the checkmark container
+            var $checkContainer = $('.ui-poll .results tr td .select-box');
+
+            // Loop through each .select-box
+            $checkContainer.each(function(){
+                // Append the Font Awesome checkmark to .select-box
+                $(this).append($('<i class="fa fa-check"></i>'));
+
+                // Then remove the image from the DOM
+                $(this).children('img').remove();
+            });
+        }
         
-        // Create variable for the checkmark container
-        var $checkContainer = $('.ui-poll .results tr td .select-box');
-
-        // Loop through each .select-box
-        $checkContainer.each(function(){
-            // Append the Font Awesome checkmark to .select-box
-            $(this).append($('<i class="fa fa-check"></i>'));
-
-            // Then remove the image from the DOM
-            $(this).children('img').remove();
-        });
+        replaceDefaultIcons();
+        pb.events.on('pageChange', replaceDefaultIcons);
     });
     </script>
 
