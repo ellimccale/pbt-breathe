@@ -1,4 +1,4 @@
-# Breathe v1.0.4
+# Breathe v1.0.5
 *Breathe* is a gray and pine green theme built for the free forum software [ProBoards](https://proboards.com/). It features a fancy sticky navigation menu, affiliate bar, and remodels for all major layout templates. It’s intended for use with any forum genre or topic. Built using my v5 theme base, [*cast*](https://github.com/elli-petersen/pbt-cast).
 
 As a premade, *Breathe* is to be installed to your forum as is, or customized to suit your specific needs. You may edit any part of this skin as long as my credits remain **intact** and **visible**. It may not be used as a base for your own premade, claimed as your own, or picked apart for specific code. If you are interested in an individual remodel, please request it.
